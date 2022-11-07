@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      xmlns:converters="clr-namespace:HomeGardenShop.ConvertData"
+       xmlns:translate="clr-namespace:HomeGardenShop.Helps.AppLocalizer;assembly=HomeGardenShop" 
+    x:Class="HomeGardenShop.Views.ViewCell.SettingsViewCell">
+    <ContentView.Resources>
+
+        <Style TargetType="Switch">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CommonStates">
+                        <VisualState x:Name="On">
+                            <VisualState.Setters>
+                                <Setter Property="ThumbColor"
+                            Value="MediumSpringGreen" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Off">
+                            <VisualState.Setters>
+                                <Setter Property="ThumbColor"
+                            Value="Red" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        <Style TargetType="RadioButton">
+            <Setter Property="VisualStateManager.VisualStateGroups">
+                <VisualStateGroupList>
+                    <VisualStateGroup x:Name="CheckedStates">
+                        <VisualState x:Name="Checked">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor"
+                                        Value="#388E3C" />
+                                <Setter Property="Opacity"
+                                        Value="1" />
+                            </VisualState.Setters>
+                        </VisualState>
+                        <VisualState x:Name="Unchecked">
+                            <VisualState.Setters>
+                                <Setter Property="TextColor"
+                                       Value="{AppThemeBinding Dark={StaticResource LightTextColor},Light={StaticResource DarkTextColor}}" />
+                                <Setter Property="BorderColor"
+                                        Value="Transparent" />
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateGroupList>
+            </Setter>
+        </Style>
+        <ResourceDictionary>
+            <converters:EnumToStringConverter x:Key="EnumConverter"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+   
+    <ContentView.Content>
+        <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal"   Margin="15">
+                <Label Text="{translate:Translate SettingsDarkMode}" Style="{x:StaticResource LabelBackground}"></Label>
+                <Switch IsToggled="{Binding IsDarkMode}" VerticalOptions="Start" Margin="10,-3,0,0"></Switch>
+
+
+            </StackLayout>
+            <Label Text="{translate:Translate SettingLanguage}"  Margin="15, 5, 15, 5" Style="{x:StaticResource LabelBackground}"></Label>
+            <StackLayout BindableLayout.ItemsSource="{Binding Languages}" Spacing="0" Orientation="Vertical"
+                             HorizontalOptions="Start" Margin="15, 5, 15, 0" Grid.Row="1">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton IsChecked="{Binding IsChange}" CheckedChanged="RadioButton_CheckedChanged"  BackgroundColor="Transparent"
+                                         Content="{Binding Name,Converter={x:StaticResource EnumConverter}}"
+                                         FontSize="Small"/>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </StackLayout>
+          
+    </ContentView.Content>
+</ContentView>
+

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:translate="clr-namespace:HomeGardenShop.Helps.AppLocalizer;assembly=HomeGardenShop" 
+    x:Class="HomeGardenShop.Views.ViewCell.AboutUsViewCell">
+    <ContentView.Content>
+         <Grid Style="{x:StaticResource GridBackground}">
+            <ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" VerticalScrollBarVisibility="Never" Margin="20,20,20,0">
+               <Label Text="{Binding AboutUsText}" TextColor="Gray" LineBreakMode="WordWrap"></Label>
+            </ScrollView>
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>
+

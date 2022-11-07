@@ -1,0 +1,618 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">iPhoneSimulator</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C6C480A7-563A-4C22-BA90-8FD7FA3A3FD4}</ProjectGuid>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TemplateGuid>{6143fdea-f3c2-4a09-aafa-6e230626515e}</TemplateGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>HomeGardenShop.iOS</RootNamespace>
+    <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
+    <AssemblyName>HomeGardenShop.iOS</AssemblyName>
+    <MtouchEnableSGenConc>true</MtouchEnableSGenConc>
+    <MtouchHttpClientHandler>NSUrlSessionHandler</MtouchHttpClientHandler>
+    <ProvisioningType>automatic</ProvisioningType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhoneSimulator' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>x86_64</MtouchArch>
+    <MtouchLink>None</MtouchLink>
+    <CodesignProvision>Test Project</CodesignProvision>
+    <CodesignKey>Apple Development: Maksim Slutskiy (8X2T2TZ392)</CodesignKey>
+    <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
+    <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchI18n>west</MtouchI18n>
+<DeviceSpecificBuild>false</DeviceSpecificBuild>
+<MtouchSdkVersion>15.5</MtouchSdkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhoneSimulator\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchLink>None</MtouchLink>
+    <MtouchArch>x86_64</MtouchArch>
+    <CodesignProvision>Test Project</CodesignProvision>
+    <CodesignKey>Apple Development: Maksim Slutskiy (8X2T2TZ392)</CodesignKey>
+    <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
+    <MtouchI18n>west</MtouchI18n>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\iPhone\Debug</OutputPath>
+    <DefineConstants>DEBUG</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <MtouchDebug>true</MtouchDebug>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <MtouchLink>None</MtouchLink>
+    <MtouchInterpreter>-all</MtouchInterpreter>
+    <CodesignProvision>Test Project</CodesignProvision>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\iPhone\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <MtouchArch>ARM64</MtouchArch>
+    <CodesignKey>Apple Development: Maksim Slutskiy (8X2T2TZ392)</CodesignKey>
+    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision></CodesignProvision>
+    <MtouchLink>SdkOnly</MtouchLink>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Main.cs" />
+    <Compile Include="AppDelegate.cs" />
+    <None Include="Entitlements.plist" />
+    <None Include="Info.plist" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CustomViews\ExtendedImageRender.cs" />
+    <Compile Include="CustomViews\ExtendedImageButtonRenderer.cs" />
+    <Compile Include="CustomViews\ExtendedViewCellRenderer.cs" />
+    <None Include="Info.plist" />
+    <Compile Include="CustomViews\ExtendedPickerRenderer.cs" />
+    <Compile Include="Helpers\PickerBorderHelper.cs" />
+    <Compile Include="CustomViews\ExtendedDatePickerRenderer.cs" />
+    <Compile Include="Helpers\AlignmentHelper.cs" />
+    <Compile Include="Helpers\StatusBarStyleManager.cs" />
+    <Compile Include="Helpers\Path.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\HomeGardenShop\HomeGardenShop.csproj">
+      <Project>{E469056F-FF91-461E-9F52-0E545099A193}</Project>
+      <Name>HomeGardenShop</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CustomViews\" />
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\CHE.png" />
+    <BundleResource Include="Resources\outline_swap.png" />
+    <BundleResource Include="Resources\store_2%403x.png" />
+    <BundleResource Include="Resources\KGZ%402x.png" />
+    <BundleResource Include="Resources\outline_terrain%402x.png" />
+    <BundleResource Include="Resources\outline_add_view.png" />
+    <BundleResource Include="Resources\SYP.png" />
+    <BundleResource Include="Resources\RsType_0%402x.png" />
+    <BundleResource Include="Resources\VNM%403x.png" />
+    <BundleResource Include="Resources\ISR.png" />
+    <BundleResource Include="Resources\PRT.png" />
+    <BundleResource Include="Resources\outline_left_end_route.png" />
+    <BundleResource Include="Resources\DEU%402x.png" />
+    <BundleResource Include="Resources\outline_drag_handle.png" />
+    <BundleResource Include="Resources\outline_arrow.png" />
+    <BundleResource Include="Resources\outline_arrow_forward%403x.png" />
+    <BundleResource Include="Resources\outline_save%403x.png" />
+    <BundleResource Include="Resources\outline_layers_clear.png" />
+    <BundleResource Include="Resources\RUS%403x.png" />
+    <BundleResource Include="Resources\CUB%403x.png" />
+    <BundleResource Include="Resources\RsType_2%403x.png" />
+    <BundleResource Include="Resources\store_history%403x.png" />
+    <BundleResource Include="Resources\LVA%402x.png" />
+    <BundleResource Include="Resources\catalog.png" />
+    <BundleResource Include="Resources\DNK%403x.png" />
+    <BundleResource Include="Resources\PRK%402x.png" />
+    <BundleResource Include="Resources\arrow_back%402x.png" />
+    <BundleResource Include="Resources\SVK.png" />
+    <BundleResource Include="Resources\account_circle.png" />
+    <BundleResource Include="Resources\outline_right_route.png" />
+    <BundleResource Include="Resources\CHN%402x.png" />
+    <BundleResource Include="Resources\UZB%402x.png" />
+    <BundleResource Include="Resources\Default-Portrait%402x.png" />
+    <BundleResource Include="Resources\update.png" />
+    <BundleResource Include="Resources\outline_map%403x.png" />
+    <BundleResource Include="Resources\outline_wagons_supply%402x.png" />
+    <BundleResource Include="Resources\EGY.png" />
+    <BundleResource Include="Resources\TJK%402x.png" />
+    <BundleResource Include="Resources\TMMAPMOBILE_INSTALLDEMO_2.pfx" />
+    <BundleResource Include="Resources\outline_help%402x.png" />
+    <BundleResource Include="Resources\outline_clear%403x.png" />
+    <BundleResource Include="Resources\outline_filter.png" />
+    <BundleResource Include="Resources\outline_help.png" />
+    <BundleResource Include="Resources\MKD.png" />
+    <BundleResource Include="Resources\outline_left_end_route%402x.png" />
+    <BundleResource Include="Resources\HUN%403x.png" />
+    <BundleResource Include="Resources\world.mbtiles" />
+    <BundleResource Include="Resources\HUN%402x.png" />
+    <BundleResource Include="Resources\outline_left_end_route%403x.png" />
+    <BundleResource Include="Resources\outline_version.png" />
+    <BundleResource Include="Resources\SVN.png" />
+    <BundleResource Include="Resources\outline_clear%402x.png" />
+    <BundleResource Include="Resources\LTU.png" />
+    <BundleResource Include="Resources\outline_help%403x.png" />
+    <BundleResource Include="Resources\outline_map%402x.png" />
+    <BundleResource Include="Resources\outline_wagons_supply%403x.png" />
+    <BundleResource Include="Resources\IRQ.png" />
+    <BundleResource Include="Resources\TJK%403x.png" />
+    <BundleResource Include="Resources\outline_wagons_supply.png" />
+    <BundleResource Include="Resources\LBN.png" />
+    <BundleResource Include="Resources\outline_clear.png" />
+    <BundleResource Include="Resources\logo_tmmap.png" />
+    <BundleResource Include="Resources\CHN%403x.png" />
+    <BundleResource Include="Resources\archive.png" />
+    <BundleResource Include="Resources\UZB%403x.png" />
+    <BundleResource Include="Resources\DZA.png" />
+    <BundleResource Include="Resources\outline_tree.png" />
+    <BundleResource Include="Resources\arrow_back%403x.png" />
+    <BundleResource Include="Resources\DNK%402x.png" />
+    <BundleResource Include="Resources\PRK%403x.png" />
+    <BundleResource Include="Resources\RsType_2%402x.png" />
+    <BundleResource Include="Resources\store_history%402x.png" />
+    <BundleResource Include="Resources\LVA%403x.png" />
+    <BundleResource Include="Resources\outline_oversize.png" />
+    <BundleResource Include="Resources\RUS%402x.png" />
+    <BundleResource Include="Resources\CUB%402x.png" />
+    <BundleResource Include="Resources\outline_history.png" />
+    <BundleResource Include="Resources\outline_arrow_forward%402x.png" />
+    <BundleResource Include="Resources\outline_save%402x.png" />
+    <BundleResource Include="Resources\outline_theme.png" />
+    <BundleResource Include="Resources\outline_map.png" />
+    <BundleResource Include="Resources\DEU%403x.png" />
+    <BundleResource Include="Resources\outline_arrow_back.png" />
+    <BundleResource Include="Resources\VNM%402x.png" />
+    <BundleResource Include="Resources\RsType_0%403x.png" />
+    <BundleResource Include="Resources\NLD.png" />
+    <BundleResource Include="Resources\outline_terrain%403x.png" />
+    <BundleResource Include="Resources\KGZ%403x.png" />
+    <BundleResource Include="Resources\outline_tree%4021x.png" />
+    <BundleResource Include="Resources\appleid_button_ua.png" />
+    <BundleResource Include="Resources\Default-Portrait.png" />
+    <BundleResource Include="Resources\store_2%402x.png" />
+    <BundleResource Include="Resources\ARM.png" />
+    <BundleResource Include="Resources\outline_theme%402x.png" />
+    <BundleResource Include="Resources\BIH%403x.png" />
+    <BundleResource Include="Resources\RsType_2.png" />
+    <BundleResource Include="Resources\DZA%402x.png" />
+    <BundleResource Include="Resources\USA.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\outline_arrow_back%403x.png" />
+    <BundleResource Include="Resources\outline_calendar.png" />
+    <BundleResource Include="Resources\outline_doc.png" />
+    <BundleResource Include="Resources\outline_settings%402x.png" />
+    <BundleResource Include="Resources\ARM%401x.png" />
+    <BundleResource Include="Resources\outline_edit.png" />
+    <BundleResource Include="Resources\outline_view_col%403x.png" />
+    <BundleResource Include="Resources\outline_clearFilter%403x.png" />
+    <BundleResource Include="Resources\CZE%402x.png" />
+    <BundleResource Include="Resources\outline_check%403x.png" />
+    <BundleResource Include="Resources\outline_layers_clear%402x.png" />
+    <BundleResource Include="Resources\archive%402x.png" />
+    <BundleResource Include="Resources\RsType_3.png" />
+    <BundleResource Include="Resources\outline_drag_handle%402x.png" />
+    <BundleResource Include="Resources\SYP%403x.png" />
+    <BundleResource Include="Resources\TKM%403x.png" />
+    <BundleResource Include="Resources\IRQ%403x.png" />
+    <BundleResource Include="Resources\outline_filter_red%402x.png" />
+    <BundleResource Include="Resources\store_history.png" />
+    <BundleResource Include="Resources\map.png" />
+    <BundleResource Include="Resources\MAR.png" />
+    <BundleResource Include="Resources\store_2.png" />
+    <BundleResource Include="Resources\EU%402x.png" />
+    <BundleResource Include="Resources\RsType_1.png" />
+    <BundleResource Include="Resources\no_flag.png" />
+    <BundleResource Include="Resources\outline_pattern_payment%402x.png" />
+    <BundleResource Include="Resources\outline_language.png" />
+    <BundleResource Include="Resources\arrow_back.png" />
+    <BundleResource Include="Resources\SVK%403x.png" />
+    <BundleResource Include="Resources\outline_collection_views%403x.png" />
+    <BundleResource Include="Resources\RsType_4%403x.png" />
+    <BundleResource Include="Resources\RUS.png" />
+    <BundleResource Include="Resources\EGY%403x.png" />
+    <BundleResource Include="Resources\outline_last_payment%403x.png" />
+    <BundleResource Include="Resources\SWE%403x.png" />
+    <BundleResource Include="Resources\outline_RollingStock.png" />
+    <BundleResource Include="Resources\JPN%403x.png" />
+    <BundleResource Include="Resources\ALB%403x.png" />
+    <BundleResource Include="Resources\ITA.png" />
+    <BundleResource Include="Resources\outline_new_payment%402x.png" />
+    <BundleResource Include="Resources\UKR.png" />
+    <BundleResource Include="Resources\outline_list_add.png" />
+    <BundleResource Include="Resources\outline_arrow_right_black%403x.png" />
+    <BundleResource Include="Resources\outline_change_cell_list%403x.png" />
+    <BundleResource Include="Resources\outline_water%403x.png" />
+    <BundleResource Include="Resources\outline_swap%402x.png" />
+    <BundleResource Include="Resources\no_flag%402x.png" />
+    <BundleResource Include="Resources\RsType_6%402x.png" />
+    <BundleResource Include="Resources\RsType_0.png" />
+    <BundleResource Include="Resources\LTU%403x.png" />
+    <BundleResource Include="Resources\HRV.png" />
+    <BundleResource Include="Resources\arial_bold.ttf" />
+    <BundleResource Include="Resources\LTU%402x.png" />
+    <BundleResource Include="Resources\no_flag%403x.png" />
+    <BundleResource Include="Resources\RsType_6%403x.png" />
+    <BundleResource Include="Resources\RsType_4.png" />
+    <BundleResource Include="Resources\outline_ac_unit.png" />
+    <BundleResource Include="Resources\outline_water%402x.png" />
+    <BundleResource Include="Resources\CZE.png" />
+    <BundleResource Include="Resources\stations.geojson" />
+    <BundleResource Include="Resources\outline_swap%403x.png" />
+    <BundleResource Include="Resources\outline_check.png" />
+    <BundleResource Include="Resources\outline_change_cell_list%402x.png" />
+    <BundleResource Include="Resources\outline_arrow_right_black%402x.png" />
+    <BundleResource Include="Resources\outline_rs%402.png" />
+    <BundleResource Include="Resources\outline_new_payment%403x.png" />
+    <BundleResource Include="Resources\appleid_button_ru%402x.png" />
+    <BundleResource Include="Resources\JPN%402x.png" />
+    <BundleResource Include="Resources\ALB%402x.png" />
+    <BundleResource Include="Resources\outline_rs%403.png" />
+    <BundleResource Include="Resources\outline_last_payment%402x.png" />
+    <BundleResource Include="Resources\SWE%402x.png" />
+    <BundleResource Include="Resources\EGY%402x.png" />
+    <BundleResource Include="Resources\SVK%402x.png" />
+    <BundleResource Include="Resources\outline_collection_views%402x.png" />
+    <BundleResource Include="Resources\RsType_4%402x.png" />
+    <BundleResource Include="Resources\POL.png" />
+    <BundleResource Include="Resources\JPN.png" />
+    <BundleResource Include="Resources\RsType_5.png" />
+    <BundleResource Include="Resources\outline_pattern_payment%403x.png" />
+    <BundleResource Include="Resources\outline_collection_views.png" />
+    <BundleResource Include="Resources\EU%403x.png" />
+    <BundleResource Include="Resources\outline_filter_red%403x.png" />
+    <BundleResource Include="Resources\DEU.png" />
+    <BundleResource Include="Resources\SYP%402x.png" />
+    <BundleResource Include="Resources\TKM%402x.png" />
+    <BundleResource Include="Resources\IRQ%402x.png" />
+    <BundleResource Include="Resources\archive%403x.png" />
+    <BundleResource Include="Resources\outline_drag_handle%403x.png" />
+    <BundleResource Include="Resources\RsType_7.png" />
+    <BundleResource Include="Resources\outline_layers_clear%403x.png" />
+    <BundleResource Include="Resources\outline_check%402x.png" />
+    <BundleResource Include="Resources\outline_clearFilter%402x.png" />
+    <BundleResource Include="Resources\CZE%403x.png" />
+    <BundleResource Include="Resources\outline_save.png" />
+    <BundleResource Include="Resources\outline_view_col%402x.png" />
+    <BundleResource Include="Resources\update_CalcModule.png" />
+    <BundleResource Include="Resources\outline_settings%403x.png" />
+    <BundleResource Include="Resources\outline_danger.png" />
+    <BundleResource Include="Resources\outline_settings_points_white.png" />
+    <BundleResource Include="Resources\payment.png" />
+    <BundleResource Include="Resources\outline_add.png" />
+    <BundleResource Include="Resources\ROM.png" />
+    <BundleResource Include="Resources\outline_clearFilter.png" />
+    <BundleResource Include="Resources\GBR.png" />
+    <BundleResource Include="Resources\DZA%403x.png" />
+    <BundleResource Include="Resources\outline_arrow_back%402x.png" />
+    <BundleResource Include="Resources\RsType_6.png" />
+    <BundleResource Include="Resources\BIH%402x.png" />
+    <BundleResource Include="Resources\TUR.png" />
+    <BundleResource Include="Resources\VNM.png" />
+    <BundleResource Include="Resources\AZE.png" />
+    <BundleResource Include="Resources\outline_theme%403x.png" />
+    <BundleResource Include="Resources\BLR%403x.png" />
+    <BundleResource Include="Resources\AUT%403x.png" />
+    <BundleResource Include="Resources\IRN%403x.png" />
+    <BundleResource Include="Resources\UKR%403x.png" />
+    <BundleResource Include="Resources\GEO%402x.png" />
+    <BundleResource Include="Resources\outline_arrow%403x.png" />
+    <BundleResource Include="Resources\outline_info.png" />
+    <BundleResource Include="Resources\outline_settings_points_white%402x.png" />
+    <BundleResource Include="Resources\outline_tree%403x.png" />
+    <BundleResource Include="Resources\IND.png" />
+    <BundleResource Include="Resources\outline_book%402x.png" />
+    <BundleResource Include="Resources\ITA%403x.png" />
+    <BundleResource Include="Resources\ISL%403x.png" />
+    <BundleResource Include="Resources\IRL%402x.png" />
+    <BundleResource Include="Resources\outline_table.png" />
+    <BundleResource Include="Resources\CYP%402x.png" />
+    <BundleResource Include="Resources\catalog%403x.png" />
+    <BundleResource Include="Resources\CYP.png" />
+    <BundleResource Include="Resources\FIN.png" />
+    <BundleResource Include="Resources\HRV%403x.png" />
+    <BundleResource Include="Resources\outline_oversize%402x.png" />
+    <BundleResource Include="Resources\outline_language%402x.png" />
+    <BundleResource Include="Resources\MNG%402x.png" />
+    <BundleResource Include="Resources\outline_layers%403x.png" />
+    <BundleResource Include="Resources\outline_list_add%403x.png" />
+    <BundleResource Include="Resources\outline_add_view%402x.png" />
+    <BundleResource Include="Resources\exit%403x.png" />
+    <BundleResource Include="Resources\USA%403x.png" />
+    <BundleResource Include="Resources\map%402x.png" />
+    <BundleResource Include="Resources\KAZ%403x.png" />
+    <BundleResource Include="Resources\ESP%403x.png" />
+    <BundleResource Include="Resources\outline_home%403x.png" />
+    <BundleResource Include="Resources\LBN%402x.png" />
+    <BundleResource Include="Resources\outline_calendar%402x.png" />
+    <BundleResource Include="Resources\RsType_3%403x.png" />
+    <BundleResource Include="Resources\outline_tree_short%402x.png" />
+    <BundleResource Include="Resources\MDA%402x.png" />
+    <BundleResource Include="Resources\BIH.png" />
+    <BundleResource Include="Resources\TUN%403x.png" />
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\outline_stations%402x.png" />
+    <BundleResource Include="Resources\outline_version%403x.png" />
+    <BundleResource Include="Resources\arial.ttf" />
+    <BundleResource Include="Resources\outline_share%403x.png" />
+    <BundleResource Include="Resources\outline_last_payment%401x.png" />
+    <BundleResource Include="Resources\outline_book.png" />
+    <BundleResource Include="Resources\outline_right_route%402x.png" />
+    <BundleResource Include="Resources\MAR%403x.png" />
+    <BundleResource Include="Resources\outline_history%402x.png" />
+    <BundleResource Include="Resources\outline_edit%402x.png" />
+    <BundleResource Include="Resources\SVN%402x.png" />
+    <BundleResource Include="Resources\NOR%402x.png" />
+    <BundleResource Include="Resources\outline_table%403x.png" />
+    <BundleResource Include="Resources\RsType_1%402x.png" />
+    <BundleResource Include="Resources\outline_add%403x.png" />
+    <BundleResource Include="Resources\outline_add%402x.png" />
+    <BundleResource Include="Resources\outline_view_col.png" />
+    <BundleResource Include="Resources\outline_stations.png" />
+    <BundleResource Include="Resources\SVN%403x.png" />
+    <BundleResource Include="Resources\outline_pattern_payment%401x.png" />
+    <BundleResource Include="Resources\TUN.png" />
+    <BundleResource Include="Resources\NOR%403x.png" />
+    <BundleResource Include="Resources\outline_table%402x.png" />
+    <BundleResource Include="Resources\RsType_1%403x.png" />
+    <BundleResource Include="Resources\outline_history%403x.png" />
+    <BundleResource Include="Resources\outline_edit%403x.png" />
+    <BundleResource Include="Resources\EU.png" />
+    <BundleResource Include="Resources\outline_right_route%403x.png" />
+    <BundleResource Include="Resources\outline_terrain.png" />
+    <BundleResource Include="Resources\MAR%402x.png" />
+    <BundleResource Include="Resources\appleid_button_ru_white%402x.png" />
+    <BundleResource Include="Resources\TUN%402x.png" />
+    <BundleResource Include="Resources\outline_new_payment%401x.png" />
+    <BundleResource Include="Resources\outline_stations%403x.png" />
+    <BundleResource Include="Resources\outline_version%402x.png" />
+    <BundleResource Include="Resources\outline_share%402x.png" />
+    <BundleResource Include="Resources\outline_layers.png" />
+    <BundleResource Include="Resources\MDA%403x.png" />
+    <BundleResource Include="Resources\RsType_3%402x.png" />
+    <BundleResource Include="Resources\outline_tree_short%403x.png" />
+    <BundleResource Include="Resources\outline_home%402x.png" />
+    <BundleResource Include="Resources\LBN%403x.png" />
+    <BundleResource Include="Resources\outline_calendar%403x.png" />
+    <BundleResource Include="Resources\USA%402x.png" />
+    <BundleResource Include="Resources\KAZ%402x.png" />
+    <BundleResource Include="Resources\map%403x.png" />
+    <BundleResource Include="Resources\CUB.png" />
+    <BundleResource Include="Resources\ESP%402x.png" />
+    <BundleResource Include="Resources\ALB.png" />
+    <BundleResource Include="Resources\outline_add_view%403x.png" />
+    <BundleResource Include="Resources\exit%402x.png" />
+    <BundleResource Include="Resources\MNG.png" />
+    <BundleResource Include="Resources\outline_list_add%402x.png" />
+    <BundleResource Include="Resources\outline_layers%402x.png" />
+    <BundleResource Include="Resources\outline_oversize%403x.png" />
+    <BundleResource Include="Resources\HRV%402x.png" />
+    <BundleResource Include="Resources\MNG%403x.png" />
+    <BundleResource Include="Resources\outline_language%403x.png" />
+    <BundleResource Include="Resources\CYP%403x.png" />
+    <BundleResource Include="Resources\catalog%402x.png" />
+    <BundleResource Include="Resources\IRL%403x.png" />
+    <BundleResource Include="Resources\outline_tree_short.png" />
+    <BundleResource Include="Resources\ARM%402x.png" />
+    <BundleResource Include="Resources\BGR.png" />
+    <BundleResource Include="Resources\ISL%402x.png" />
+    <BundleResource Include="Resources\BEL.png" />
+    <BundleResource Include="Resources\outline_book%403x.png" />
+    <BundleResource Include="Resources\KAZ.png" />
+    <BundleResource Include="Resources\ITA%402x.png" />
+    <BundleResource Include="Resources\outline_arrow%402x.png" />
+    <BundleResource Include="Resources\outline_settings_points_white%403x.png" />
+    <BundleResource Include="Resources\IRN%402x.png" />
+    <BundleResource Include="Resources\UKR%402x.png" />
+    <BundleResource Include="Resources\GEO%403x.png" />
+    <BundleResource Include="Resources\AUT%402x.png" />
+    <BundleResource Include="Resources\BLR%402x.png" />
+    <BundleResource Include="Resources\exit.png" />
+    <BundleResource Include="Resources\FRA.png" />
+    <BundleResource Include="Resources\AUT.png" />
+    <BundleResource Include="Resources\outline_ac_unit%403x.png" />
+    <BundleResource Include="Resources\EST%402x.png" />
+    <BundleResource Include="Resources\TKM.png" />
+    <BundleResource Include="Resources\outline_settings.png" />
+    <BundleResource Include="Resources\outline_doc%402x.png" />
+    <BundleResource Include="Resources\SWE.png" />
+    <BundleResource Include="Resources\BEL%403x.png" />
+    <BundleResource Include="Resources\outline_search%402x.png" />
+    <BundleResource Include="Resources\outline_info%402x.png" />
+    <BundleResource Include="Resources\TMmap.db3" />
+    <BundleResource Include="Resources\update_CalcModule%403x.png" />
+    <BundleResource Include="Resources\outline_water.png" />
+    <BundleResource Include="Resources\AZE%403x.png" />
+    <BundleResource Include="Resources\NOR.png" />
+    <BundleResource Include="Resources\GEO.png" />
+    <BundleResource Include="Resources\RsType_7%402x.png" />
+    <BundleResource Include="Resources\PRK.png" />
+    <BundleResource Include="Resources\outline_cargo%403x.png" />
+    <BundleResource Include="Resources\NLD%403x.png" />
+    <BundleResource Include="Resources\TUR%402x.png" />
+    <BundleResource Include="Resources\ISL.png" />
+    <BundleResource Include="Resources\outline_check_circle%403x.png" />
+    <BundleResource Include="Resources\BLR.png" />
+    <BundleResource Include="Resources\outline_route.png" />
+    <BundleResource Include="Resources\outline_change_cell_list.png" />
+    <BundleResource Include="Resources\FIN%403x.png" />
+    <BundleResource Include="Resources\outline_search.png" />
+    <BundleResource Include="Resources\outline_arrow_right_black.png" />
+    <BundleResource Include="Resources\outline_cargo.png" />
+    <BundleResource Include="Resources\update%402x.png" />
+    <BundleResource Include="Resources\TMmap.user.db3" />
+    <BundleResource Include="Resources\POL%403x.png" />
+    <BundleResource Include="Resources\BGR%402x.png" />
+    <BundleResource Include="Resources\outline_filter%403x.png" />
+    <BundleResource Include="Resources\LUX%402x.png" />
+    <BundleResource Include="Resources\MDA.png" />
+    <BundleResource Include="Resources\DNK.png" />
+    <BundleResource Include="Resources\IND%403x.png" />
+    <BundleResource Include="Resources\outline_rs.png" />
+    <BundleResource Include="Resources\RsType_5%403x.png" />
+    <BundleResource Include="Resources\TermsOfUse_UA.docx" />
+    <BundleResource Include="Resources\slider_tablet.png" />
+    <BundleResource Include="Resources\HUN.png" />
+    <BundleResource Include="Resources\outline_danger%402x.png" />
+    <BundleResource Include="Resources\slider_tablet_rus.png" />
+    <BundleResource Include="Resources\ISR%403x.png" />
+    <BundleResource Include="Resources\CHE%402x.png" />
+    <BundleResource Include="Resources\FRA%402x.png" />
+    <BundleResource Include="Resources\outline_RollingStock%402x.png" />
+    <BundleResource Include="Resources\payment%403x.png" />
+    <BundleResource Include="Resources\EST.png" />
+    <BundleResource Include="Resources\MapObj.db3" />
+    <BundleResource Include="Resources\ROM%402x.png" />
+    <BundleResource Include="Resources\appleid_button_ua_white%402x.png" />
+    <BundleResource Include="Resources\GRC%403x.png" />
+    <BundleResource Include="Resources\MKD%402x.png" />
+    <BundleResource Include="Resources\GBR%403x.png" />
+    <BundleResource Include="Resources\PRT%402x.png" />
+    <BundleResource Include="Resources\outline_error%402x.png" />
+    <BundleResource Include="Resources\AFG.png" />
+    <BundleResource Include="Resources\AFG%402x.png" />
+    <BundleResource Include="Resources\outline_route%403x.png" />
+    <BundleResource Include="Resources\CHN.png" />
+    <BundleResource Include="Resources\outline_share.png" />
+    <BundleResource Include="Resources\TJK.png" />
+    <BundleResource Include="Resources\slider_phone_rus.png" />
+    <BundleResource Include="Resources\slider_phone_eng.png" />
+    <BundleResource Include="Resources\AFG%403x.png" />
+    <BundleResource Include="Resources\outline_route%402x.png" />
+    <BundleResource Include="Resources\PRT%403x.png" />
+    <BundleResource Include="Resources\outline_error%403x.png" />
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\GBR%402x.png" />
+    <BundleResource Include="Resources\MKD%403x.png" />
+    <BundleResource Include="Resources\GRC%402x.png" />
+    <BundleResource Include="Resources\LUX.png" />
+    <BundleResource Include="Resources\UZB.png" />
+    <BundleResource Include="Resources\ROM%403x.png" />
+    <BundleResource Include="Resources\outline_home.png" />
+    <BundleResource Include="Resources\IRN.png" />
+    <BundleResource Include="Resources\KGZ.png" />
+    <BundleResource Include="Resources\outline_check_circle.png" />
+    <BundleResource Include="Resources\payment%402x.png" />
+    <BundleResource Include="Resources\ESP.png" />
+    <BundleResource Include="Resources\slider_tablet_eng.png" />
+    <BundleResource Include="Resources\slider_phone.png" />
+    <BundleResource Include="Resources\FRA%403x.png" />
+    <BundleResource Include="Resources\outline_RollingStock%403x.png" />
+    <BundleResource Include="Resources\CHE%403x.png" />
+    <BundleResource Include="Resources\outline_danger%403x.png" />
+    <BundleResource Include="Resources\ISR%402x.png" />
+    <BundleResource Include="Resources\IND%402x.png" />
+    <BundleResource Include="Resources\outline_error.png" />
+    <BundleResource Include="Resources\RsType_5%402x.png" />
+    <BundleResource Include="Resources\BGR%403x.png" />
+    <BundleResource Include="Resources\LUX%403x.png" />
+    <BundleResource Include="Resources\outline_filter%402x.png" />
+    <BundleResource Include="Resources\outline_filter_red.png" />
+    <BundleResource Include="Resources\POL%402x.png" />
+    <BundleResource Include="Resources\update%403x.png" />
+    <BundleResource Include="Resources\FIN%402x.png" />
+    <BundleResource Include="Resources\GRC.png" />
+    <BundleResource Include="Resources\NLD%402x.png" />
+    <BundleResource Include="Resources\TUR%403x.png" />
+    <BundleResource Include="Resources\outline_arrow_forward.png" />
+    <BundleResource Include="Resources\IRL.png" />
+    <BundleResource Include="Resources\outline_check_circle%402x.png" />
+    <BundleResource Include="Resources\outline_cargo%402x.png" />
+    <BundleResource Include="Resources\RsType_7%403x.png" />
+    <BundleResource Include="Resources\AZE%402x.png" />
+    <BundleResource Include="Resources\LVA.png" />
+    <BundleResource Include="Resources\outline_info%403x.png" />
+    <BundleResource Include="Resources\update_CalcModule%402x.png" />
+    <BundleResource Include="Resources\outline_doc%403x.png" />
+    <BundleResource Include="Resources\BEL%402x.png" />
+    <BundleResource Include="Resources\outline_search%403x.png" />
+    <BundleResource Include="Resources\outline_ac_unit%402x.png" />
+    <BundleResource Include="Resources\EST%403x.png" />
+    <BundleResource Include="Resources\cert.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <InterfaceDefinition Include="Resources\LaunchStoryboard.storyboard" />
+  </ItemGroup>
+</Project>

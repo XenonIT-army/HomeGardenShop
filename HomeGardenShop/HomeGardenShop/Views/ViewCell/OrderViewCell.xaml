@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pancakeView:PancakeView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+     x:Name="Cell"
+       xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                               Style="{x:StaticResource PancakeViewStyle}"
+                                xmlns:customviews="clr-namespace:HomeGardenShop.CustomViews"
+                               Margin="15"
+       xmlns:translate="clr-namespace:HomeGardenShop.Helps.AppLocalizer;assembly=HomeGardenShop" 
+                                 xmlns:converters="clr-namespace:HomeGardenShop.ConvertData"
+    x:Class="HomeGardenShop.Views.ViewCell.OrderViewCell">
+     <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:OrderStatusConverter x:Key="OrderStatusConverter"/>
+             <converters:OrderStatusColorConverter x:Key="OrderStatusColorConverter"/>
+             <converters:CancelStatusConverter x:Key="CancelStatusConverter"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <Grid ColumnDefinitions="3*,auto" >
+
+        <StackLayout Grid.Column="0"  Orientation="Vertical" VerticalOptions="FillAndExpand"  HorizontalOptions="FillAndExpand">
+            <Label FontAttributes="Bold" VerticalOptions="StartAndExpand" Style="{x:StaticResource LabelCardBackground}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{translate:Translate OrderNumber}" />
+                        <Span Text=" " />
+                        <Span Text="{Binding Id}" TextColor="DarkGoldenrod"/>
+                    </FormattedString>
+                </Label.FormattedText>
+
+            </Label>
+            <Label FontSize="Small" VerticalOptions="CenterAndExpand" Style="{x:StaticResource LabelCardBackground}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{translate:Translate OrderStatus}" />
+                        <Span Text=" " />
+                        <Span Text="{Binding StatusId,Converter={x:StaticResource OrderStatusConverter}}" TextColor="{Binding StatusId,Converter={x:StaticResource OrderStatusColorConverter}}"/>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+            <Label  FontSize="Small" Grid.ColumnSpan="2" VerticalOptions="EndAndExpand" Style="{x:StaticResource LabelCardBackground}">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{translate:Translate OrderDate}" />
+                        <Span Text=" " />
+                        <Span Text="{Binding DataTime}" />
+                    </FormattedString>
+                </Label.FormattedText>
+
+            </Label>
+        </StackLayout>
+
+        <StackLayout Orientation="Vertical" Grid.Column="1" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <customviews:ExtendedImageButton  HeightRequest="25" BackgroundColor="Transparent" TintColor="Red" IsVisible="{Binding StatusId,Converter={x:StaticResource CancelStatusConverter}}"  Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CancelStatusCommand}" CommandParameter="{Binding .}"    VerticalOptions="StartAndExpand"  Source="outline_clear.png"  HorizontalOptions="EndAndExpand">
+                <customviews:ExtendedImageButton.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="iOS" Value="35" />
+                        <On Platform="Android" Value="25" />
+                    </OnPlatform>
+                </customviews:ExtendedImageButton.HeightRequest>
+            </customviews:ExtendedImageButton>
+
+            <Label  FontSize="Subtitle" FontAttributes="Bold" VerticalOptions="CenterAndExpand" Style="{x:StaticResource LabelCardBackground}" HorizontalOptions="CenterAndExpand">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="{Binding Sum}" />
+                        <Span Text=" " />
+                        <Span Text="{translate:Translate DetailProductCurrency}" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+
+            <customviews:ExtendedImageButton  HeightRequest="25" BackgroundColor="Transparent" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DetailCommand}" CommandParameter="{Binding .}" VerticalOptions="EndAndExpand"  Source="outline_edit.png"  TintColor="{AppThemeBinding Dark={StaticResource Black},Light={StaticResource White}}" HorizontalOptions="EndAndExpand">
+                <customviews:ExtendedImageButton.HeightRequest>
+                    <OnPlatform x:TypeArguments="x:Double">
+                        <On Platform="iOS" Value="35" />
+                        <On Platform="Android" Value="25" />
+                    </OnPlatform>
+                </customviews:ExtendedImageButton.HeightRequest>
+            </customviews:ExtendedImageButton>
+        </StackLayout>
+
+
+
+
+    </Grid>
+</pancakeView:PancakeView>
+

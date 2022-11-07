@@ -1,0 +1,150 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "HomeGardenShopServer";
+
+package greet;
+
+service Greeter {
+
+    rpc MakeAnOrder (MakeAnOrderRequest) returns (stream MakeAnOrderReply);
+
+    rpc ListOrders (ListOrdersRequest) returns (ListOrdersReply);
+
+    rpc CancelOrder (CancelOrderRequest) returns (CancelOrderReply);
+
+    rpc ListProducts(ProductsRequest) returns (stream ProductsReply) {}
+
+    rpc ListCategorys(CategorysRequest) returns (stream CategorysReply) {}
+
+    rpc ListNews(NewsRequest) returns (stream NewsReply) {}
+
+    rpc RegistrUser (RegistrUserRequest) returns (RegistrUserReply);
+
+    rpc IsRegistrUser (IsRegistrUserRequest) returns  (IsRegistrUserReply);
+
+    rpc GetUser (GetUserRequest) returns (GetUserReply);
+
+    rpc GetAboutUs (GetAboutUsRequest) returns (GetAboutUsReply);
+}
+
+message ListOrdersRequest{
+    string userId = 1;
+}
+
+message NewsRequest{
+    string language = 1;
+}
+
+message RegistrUserRequest{
+    string userId = 1;
+    string name = 2;
+    string mail = 3;
+    string address = 4;
+    string phone = 5;   
+}
+
+message IsRegistrUserRequest{
+   string userId = 1;
+}
+
+message GetUserRequest{
+   string userId = 1;
+}
+
+message GetAboutUsRequest{
+   string language = 1;
+}
+
+
+message MakeAnOrderRequest {
+    repeated ProductGrpc products = 1;
+    int32 orderId = 4;
+    string userId = 5;
+    int32 statusId = 6;
+    double sum = 7;
+}
+
+message ProductGrpc   {
+    int32 id = 1;
+    double count = 2;
+    double price = 3;
+}
+
+message CancelOrderRequest{
+    int32 orderId = 1;
+    int32 statusId = 2;
+    string userId = 3;
+}
+
+message ProductsRequest{
+    string language = 1;
+}
+
+message CategorysRequest{
+    string language = 1;
+}
+
+message MakeAnOrderReply {
+    int32 orderId = 1;
+    int32 statusId = 2;
+}
+
+message ListOrdersReply {
+   repeated OrderGrpc orders = 1;
+}
+
+message OrderGrpc {
+    int32 orderId = 1;
+    string userId = 2;
+    int32 statusId = 3;
+    double sum = 4;
+    string dateTime = 5;
+    repeated ProductsReply products = 6;
+}
+
+message ProductsReply{
+    int32 id = 1;
+    string name = 2;
+    double count = 3;
+    double price = 4;
+    int32 categoryId = 5;
+    double discountPrice = 6;
+    string description = 7;
+    bytes image = 8;
+}
+
+message CategorysReply{
+    int32 id = 1;
+    string name = 2;
+}
+
+message CancelOrderReply{
+    bool isCancel = 1;
+}
+
+message NewsReply{
+    int32 id = 1;
+    string name = 2;
+    string description = 3;
+    bytes image = 4;
+    string dateTime = 5;
+}
+
+message RegistrUserReply{
+    bool isRegistr = 1;
+}
+
+message IsRegistrUserReply{
+  bool isRegistr =  1;
+    bool isError =  2;
+}
+message GetUserReply{
+   string name =1;
+   string mail = 2;
+   string address = 3;
+   string phone = 4;
+}
+
+message GetAboutUsReply{
+   string text =1;
+}

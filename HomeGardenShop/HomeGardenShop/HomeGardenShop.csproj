@@ -1,0 +1,118 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+      <Protobuf Include="Protos\greet.proto" GrpcServices="Client" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
+    <PackageReference Include="Prism.Forms" Version="8.1.97" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="8.1.97" />
+    <PackageReference Include="Grpc.Net.Client" Version="2.34.0" />
+    <PackageReference Include="Grpc.Net.Client.Web" Version="2.34.0" />
+    <PackageReference Include="Grpc.Tools" Version="2.34.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Google.Protobuf" Version="3.14.0" />
+    <PackageReference Include="Sharpnado.Forms.HorizontalListView" Version="1.8.2" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.3.0.759" />
+    <PackageReference Include="Sharpnado.Tabs" Version="2.2.0" />
+    <PackageReference Include="Sharpnado.CollectionView" Version="2.1.0" />
+    <PackageReference Include="Rg.Plugins.Popup" Version="2.1.0" />
+    <PackageReference Include="Prism.Plugin.Popups" Version="8.0.76" />
+    <PackageReference Include="Plugin.ValidationRules" Version="1.5.0.1" />
+    <PackageReference Include="System.Collections.Immutable" Version="6.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Prism.Forms" />
+    <None Remove="Prism.DryIoc.Forms" />
+    <None Remove="CustomViews\" />
+    <None Remove="Controls\" />
+    <None Remove="Properties\" />
+    <None Remove="ConvertData\" />
+    <None Remove="Helps\" />
+    <None Remove="Helps\AppLocalizer\" />
+    <None Remove="ViewModels\" />
+    <None Remove="Views\" />
+    <None Remove="Google.Protobuf" />
+    <None Remove="Grpc.Net.Client" />
+    <None Remove="Grpc.Net.Client.Web" />
+    <None Remove="Grpc.Tools" />
+    <None Remove="Services\" />
+    <None Remove="Models\" />
+    <None Remove="AppManagers\" />
+    <None Remove="Sharpnado.Forms.HorizontalListView" />
+    <None Remove="Sharpnado.CollectionView" />
+    <None Remove="Xamarin.Forms.PancakeView" />
+    <None Remove="Sharpnado.Tabs" />
+    <None Remove="Views\ViewCell\" />
+    <None Remove="Sharpnado.MaterialFrame" />
+    <None Remove="Sharpnado.TaskLoaderView" />
+    <None Remove="Xamarin.Forms.Skeleton" />
+    <None Remove="ViewModels\DialogViewModels\" />
+    <None Remove="Views\DialogViews\" />
+    <None Remove="Rg.Plugins.Popup" />
+    <None Remove="Prism.Plugin.Popups" />
+    <None Remove="Plugin.ValidationRules" />
+    <None Remove="Helps\Validation\" />
+    <None Remove="PhoneNumbers" />
+    <None Remove="Helps\DataContainer\" />
+    <None Remove="Helps\DependencyServices\" />
+    <None Remove="System.Collections.Immutable" />
+    <None Remove="Grpc.Core" />
+    <None Remove="Grpc.Core.Api" />
+    <None Remove="Grpc.Core.Xamarin" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CustomViews\" />
+    <Folder Include="Controls\" />
+    <Folder Include="ConvertData\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Views\" />
+    <Folder Include="Services\" />
+    <Folder Include="Models\" />
+    <Folder Include="AppManagers\" />
+    <Folder Include="Views\ViewCell\" />
+    <Folder Include="ViewModels\DialogViewModels\" />
+    <Folder Include="Views\DialogViews\" />
+    <Folder Include="Helps\Validation\" />
+    <Folder Include="Helps\DataContainer\" />
+    <Folder Include="Helps\DependencyServices\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Properties\Resource.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
+    <Compile Condition=" '$(EnableDefaultCompileItems)' == 'true' " Update="Views\ViewCell\OrderProductViewCell.xaml.cs">
+      <DependentUpon>OrderProductViewCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ViewCell\OrderViewCell.xaml.cs">
+      <DependentUpon>OrderViewCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ViewCell\OrdersViewCell.xaml.cs">
+      <DependentUpon>OrderViewCell.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="PhoneNumbers">
+      <HintPath>Deps\PhoneNumbers.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>

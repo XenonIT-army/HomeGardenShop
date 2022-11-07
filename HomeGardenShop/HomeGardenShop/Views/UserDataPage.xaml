@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:controls="clr-namespace:HomeGardenShop.Controls"
+      xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+              ios:Page.UseSafeArea="true"
+     xmlns:translate="clr-namespace:HomeGardenShop.Helps.AppLocalizer;assembly=HomeGardenShop" 
+      Style="{x:StaticResource ContentPageBackground}"
+      xmlns:tabs="clr-namespace:Sharpnado.Tabs;assembly=Sharpnado.Tabs"
+     xmlns:viewcell="clr-namespace:HomeGardenShop.Views.ViewCell"
+          NavigationPage.HasNavigationBar="false"
+    x:Class="HomeGardenShop.Views.UserDataPage">
+
+    <ContentPage.Content>
+        <Grid RowDefinitions="50,*">
+           <tabs:TabHostView x:Name="TabHost"
+                    Grid.Row="0"
+                    HeightRequest="40"
+                    Margin="20,15,20,0"
+                    VerticalOptions="Center"
+                    BackgroundColor="{AppThemeBinding Dark={StaticResource TabHostDarkColor},Light={StaticResource DarkFrameColor}}"
+                    CornerRadius="20"
+                    IsSegmented="True"
+                    SegmentedHasSeparator="True"
+                    SegmentedOutlineColor="{StaticResource BlackC50}"
+                    TabType="Fixed"
+                    SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}">
+                <tabs:TabHostView.Tabs>
+                    <tabs:SegmentedTabItem Style="{x:StaticResource TabItemStyle}"  Label="{translate:Translate UserDataAboutUs}" />
+                    <tabs:SegmentedTabItem Style="{x:StaticResource TabItemStyle}"   Label="{translate:Translate UserDataUser}" />
+                    <tabs:SegmentedTabItem Style="{x:StaticResource TabItemStyle}"   Label="{translate:Translate UserDataSettings}" />
+                </tabs:TabHostView.Tabs>
+            </tabs:TabHostView>
+
+            <tabs:ViewSwitcher x:Name="Switcher" 
+                           Animate="True" Grid.Row="1" 
+                            SelectedIndex="{Binding SelectedViewIndex, Mode=TwoWay}">
+                  <viewcell:AboutUsViewCell />
+                  <viewcell:UserViewCell />
+                  <viewcell:SettingsViewCell />
+                
+            </tabs:ViewSwitcher>
+
+
+            <controls:CustomBarView x:Name="BottomBar" ItemsSource="{Binding ToolbarItems}" VerticalOptions="End"
+                                        ItemSelected="{Binding ItemSelectionChangedCommand}"
+                                        BarBackgroundColor="#388E3C"
+                                       
+                                        Grid.Row="1"/>
+        </Grid>
+
+
+    </ContentPage.Content>
+</ContentPage>
+

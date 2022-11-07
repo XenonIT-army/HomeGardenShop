@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    
+       xmlns:shades="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+        xmlns:viewcell="clr-namespace:HomeGardenShop.Views.ViewCell"
+      x:Name="View"
+       xmlns:translate="clr-namespace:HomeGardenShop.Helps.AppLocalizer;assembly=HomeGardenShop" 
+    x:Class="HomeGardenShop.Views.ViewCell.ProductsLoaderView">
+    <ContentView.Content>
+        <!--<taskLoaderView:TaskLoaderView 
+                            TaskLoaderNotifier="{Binding Loader}">
+
+            <RefreshView Command="{Binding Loader.RefreshCommand}"
+                        IsRefreshing="{Binding Loader.ShowRefresher}"
+                        RefreshColor="Red">
+                <Grid RowDefinitions="auto">
+                    <ListView sk:Skeleton.IsParent="True" Grid.Row="0"    CachingStrategy="RecycleElement"  VerticalScrollBarVisibility="Always" 
+	                                                    sk:Skeleton.IsBusy="{Binding IsBusy}"
+	                                        sk:Skeleton.Animation="{sk:DefaultAnimation Fade}"  ItemsSource="{Binding Loader.Result}" Style="{x:StaticResource ListViewStyle}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell  >
+                                   
+                                    <shades:Shadows CornerRadius="20" >
+                                        <viewcell:ProductViewCell
+                                                         Elevation="4">
+
+                                        </viewcell:ProductViewCell>
+                                    </shades:Shadows>
+
+                                </ViewCell>
+
+                            </DataTemplate>
+
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+
+                </Grid>
+
+                <StackLayout sk:Skeleton.IsParent="True"    BackgroundColor="Transparent"
+	                                                    sk:Skeleton.IsBusy="{Binding IsBusy}"
+	                                        sk:Skeleton.Animation="{sk:DefaultAnimation Fade}" BindableLayout.ItemsSource="{Binding Loader.Result}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <shades:Shadows CornerRadius="20" >
+                                    <viewcell:ProductViewCell
+                                                         Elevation="4">
+
+                                    </viewcell:ProductViewCell>
+                                </shades:Shadows>
+                            </DataTemplate>
+
+                        </BindableLayout.ItemTemplate>
+
+
+                    </StackLayout>
+            </RefreshView>
+
+            
+            <taskLoaderView:TaskLoaderView.LoadingView>
+                <ListView  sk:Skeleton.IsParent="True" VerticalScrollBarVisibility="Never" 
+	                                                    sk:Skeleton.IsBusy="{Binding IsBusy}"
+	                                        sk:Skeleton.Animation="{sk:DefaultAnimation Fade}"  ItemsSource="{Binding LoadProducts}" Style="{x:StaticResource ListViewStyle}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+
+                                <ContentView>
+                                    <shades:Shadows CornerRadius="20" >
+                                        <viewcell:ProductViewCell 
+                                                         Elevation="4">
+
+                                        </viewcell:ProductViewCell>
+                                    </shades:Shadows>
+
+                                </ContentView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+            </taskLoaderView:TaskLoaderView.LoadingView>
+
+        </taskLoaderView:TaskLoaderView>-->
+        <Grid RowDefinitions="auto">
+            <ListView IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsRefreshing}" RefreshCommand="{Binding RefreshCommand}" Grid.Row="0"   CachingStrategy="RecycleElement"  VerticalScrollBarVisibility="Never" 
+	                                                     ItemsSource="{Binding Products}" Style="{x:StaticResource ListViewStyle}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell  >
+
+                                <viewcell:ProductViewCell>
+
+                                </viewcell:ProductViewCell>
+
+                        </ViewCell>
+
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+
+                    <StackLayout >
+                        <Label Margin="0,0,0,70"></Label>
+                    </StackLayout>
+                </ListView.Footer>
+            </ListView>
+
+        </Grid>
+    </ContentView.Content>
+</ContentView>
+

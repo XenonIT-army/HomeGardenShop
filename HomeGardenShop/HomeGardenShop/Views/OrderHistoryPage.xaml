@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+     mc:Ignorable="d"
+      BackgroundColor="Transparent"
+        xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+              ios:Page.UseSafeArea="true"
+       xmlns:translate="clr-namespace:HomeGardenShop.Helps.AppLocalizer;assembly=HomeGardenShop" 
+     xmlns:controls="clr-namespace:HomeGardenShop.Controls"
+     xmlns:shades="clr-namespace:Sharpnado.Shades;assembly=Sharpnado.Shadows"
+        xmlns:viewcell="clr-namespace:HomeGardenShop.Views.ViewCell"
+           xmlns:customviews="clr-namespace:HomeGardenShop.CustomViews"
+          NavigationPage.HasNavigationBar="false"
+    x:Class="HomeGardenShop.Views.OrderHistoryPage">
+    <ContentPage.Content>
+        <Grid Style="{x:StaticResource GridBackground}">
+
+            <ListView CachingStrategy="RecycleElement"  VerticalScrollBarVisibility="Never" 
+	                                                     ItemsSource="{Binding Orders}" Style="{x:StaticResource ListViewStyle}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell >
+                            
+                            <shades:Shadows CornerRadius="20" >
+                                <viewcell:OrderViewCell>
+
+                                </viewcell:OrderViewCell>
+                            </shades:Shadows>
+
+                        </ViewCell>
+
+                    </DataTemplate>
+
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+
+                    <StackLayout >
+                        <Label Margin="0,0,0,70"></Label>
+                    </StackLayout>
+                </ListView.Footer>
+            </ListView>
+
+
+            <!--<materialFrame:MaterialFrame Margin="45,0,45,90" VerticalOptions="End" HorizontalOptions="Center" LightThemeBackgroundColor="Gold"  CornerRadius="30"  >
+                <Label Text="Оформить покупку" FontSize="Subtitle" FontAttributes="Bold" HorizontalOptions="Center" VerticalOptions="Center">
+
+
+                </Label>
+
+                <materialFrame:MaterialFrame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding MakeAnOrderCommand}"/>
+                </materialFrame:MaterialFrame.GestureRecognizers>
+
+            </materialFrame:MaterialFrame>-->
+
+            <controls:CustomBarView x:Name="BottomBar" VerticalOptions="End" ItemsSource="{Binding ToolbarItems}" 
+                                        ItemSelected="{Binding ItemSelectionChangedCommand}"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
+

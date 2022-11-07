@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:translate="clr-namespace:HomeGardenShop.Helps.AppLocalizer;assembly=HomeGardenShop" 
+    x:Class="HomeGardenShop.Views.ViewCell.UserViewCell">
+    <ContentView.Content>
+
+        <Grid Style="{x:StaticResource GridBackground}">
+            <Grid x:Name="Grid" RowDefinitions="auto,*" Margin="15,30,15,70" IsVisible="{Binding IsSign}">
+
+                <Frame Grid.Row="0" CornerRadius="60" HorizontalOptions="Center" HeightRequest="80" WidthRequest="80">
+                    <Image Source="Default.png" Aspect="Fill" HeightRequest="250" WidthRequest="250">
+
+
+                    </Image>
+
+                </Frame>
+                <StackLayout Orientation="Vertical" Grid.Row="1" Margin="30,20,30,0" HorizontalOptions="CenterAndExpand">
+                    <Label Text="{translate:Translate UserName}" FontSize="Subtitle" FontAttributes="Bold" Style="{x:StaticResource LabelTitleBackground}"/>
+                    <Label Text="{Binding User.Name}" Style="{x:StaticResource LabelBackground}" />
+                    <Label Text="{translate:Translate UserEmail}" FontSize="Subtitle" FontAttributes="Bold" Style="{x:StaticResource LabelTitleBackground}"/>
+                    <Label Text="{Binding User.Mail}" Style="{x:StaticResource LabelBackground}" />
+                    <Label Text="{translate:Translate UserAddress}" FontSize="Subtitle" FontAttributes="Bold" Style="{x:StaticResource LabelTitleBackground}"/>
+                    <Label Text="{Binding User.Address}" Style="{x:StaticResource LabelBackground}"/>
+                    <Label Text="{translate:Translate UserPhone}" FontSize="Subtitle" FontAttributes="Bold" Style="{x:StaticResource LabelTitleBackground}" />
+                    <Label  FontAttributes="Italic"  Style="{x:StaticResource LabelBackground}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <Span Text="{Binding User.CodePhone}" />
+                                <Span Text=" "/>
+                                <Span Text="{Binding User.Phone.Value}" />
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                    <Button Text="{translate:Translate UserEdit}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditCommand}"></Button>
+                    <!--<Editor AutoSize="TextChanges" FontSize="Small"  HorizontalOptions="FillAndExpand" TextColor="{AppThemeBinding Dark={StaticResource DarkLabel},Light={StaticResource LightLabel}}" BackgroundColor="{AppThemeBinding Dark={StaticResource DarkFrame},Light={StaticResource LightFrame}}"/>-->
+                    <Button Text="{translate:Translate UserSignOut}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SignOutCommand}"></Button>
+                  
+                    
+
+                </StackLayout>
+            </Grid>
+
+            <Grid >
+                <Button Command="{Binding SignInCommand}" Text="{translate:Translate UserDataSignIn}" BackgroundColor="Gold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Button>
+               <Grid.Triggers>
+                    <DataTrigger TargetType="Grid"
+                     Binding="{Binding Source={x:Reference Grid},
+                                       Path=IsVisible}" Value="True">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Grid"
+                     Binding="{Binding Source={x:Reference Grid},
+                                       Path=IsVisible}" Value="False">
+                        <Setter Property="IsVisible" Value="True" />
+                    </DataTrigger>
+                </Grid.Triggers>
+            </Grid>
+
+        </Grid>
+
+    </ContentView.Content>
+</ContentView>
+

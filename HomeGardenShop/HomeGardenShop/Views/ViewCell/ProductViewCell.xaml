@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<pancakeView:PancakeView
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+      x:Name="Cell"
+    xmlns:pancakeView="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+                               Style="{x:StaticResource PancakeViewStyle}"
+                               Margin="15"
+                                  xmlns:viewModels="clr-namespace:HomeGardenShop.Models;assembly=HomeGardenShop"
+       xmlns:translate="clr-namespace:HomeGardenShop.Helps.AppLocalizer;assembly=HomeGardenShop" 
+     xmlns:converters="clr-namespace:HomeGardenShop.ConvertData"
+    x:Class="HomeGardenShop.Views.ViewCell.ProductViewCell">
+
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <converters:ImageConverter x:Key="ImageConverter"/>
+            <converters:PriveVisibleConverter x:Key="PriveVisibleConverter"/>
+             <converters:IsVisibleConverter x:Key="IsVisibleConverter"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+    <!--<StackLayout x:DataType="viewModels:Category"
+                 Spacing="16"
+                 Orientation="Horizontal">
+
+        <Frame 
+               Padding="0"
+               VerticalOptions="FillAndExpand"
+               HorizontalOptions="FillAndExpand"
+               CornerRadius="25"
+               HasShadow="False"
+               IsClippedToBounds="True">
+
+            <Image 
+                   Aspect="AspectFill"
+                   Source="Default.png" />
+
+        </Frame>
+
+        
+
+    </StackLayout>-->
+   
+
+
+        <Grid RowDefinitions="auto,auto,1,auto,auto,auto" >
+            <Image x:Name="image" Aspect="AspectFill" Grid.Row="0"  HeightRequest="250" IsVisible="{Binding AllCount, Converter={x:StaticResource IsVisibleConverter}}"
+                   Source="{Binding Image,Converter= {x:StaticResource ImageConverter}}" />
+
+            <Grid Grid.Row="0"  HeightRequest="250">
+
+                 <Label Text="Нет в наличии!" Style="{x:StaticResource LabelCardBackground}" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand"></Label>
+             <Grid.Triggers>
+                    <DataTrigger TargetType="Grid"
+                                        Binding="{Binding Source={x:Reference image}, Path=IsVisible}" Value="True">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Grid"
+                                          Binding="{Binding Source={x:Reference image}, Path=IsVisible}" Value="False">
+                        <Setter Property="IsVisible" Value="True" />
+                    </DataTrigger>
+                </Grid.Triggers>
+            </Grid>
+
+            <Label Grid.Row="1" FontSize="Small" Style="{x:StaticResource LabelCardBackground}"  Text="{Binding Description}"></Label>
+            <BoxView Grid.Row="2" HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Gray"></BoxView>
+            <StackLayout Grid.Row="3" Orientation="Horizontal" HorizontalOptions="Fill">
+                <Label FontSize="Body" Style="{x:StaticResource LabelCardBackground}"  FontAttributes="Bold" Text="{Binding Name}"></Label>
+                <!--<Label FontSize="Body" HorizontalOptions="EndAndExpand" >
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span Text="Доступно: " />
+                        <Span Text="{Binding Count}" />
+                         <Span Text="кг" />
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>-->
+            </StackLayout>
+
+            <StackLayout Margin="0,10,0,0" Grid.Row="4" Orientation="Horizontal" HorizontalOptions="Fill">
+                <Label Style="{x:StaticResource LabelCardBackground}"   VerticalOptions="Center" IsVisible="{Binding DiscountPrice,Converter={x:StaticResource PriveVisibleConverter}}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{translate:Translate DetailProductPrice}" />
+                            <Span Text=" " />
+                            <Span Text="{Binding Price}" />
+                            <Span Text=" - " />
+                            <Span Text="{Binding DiscountPrice}" TextColor="Red"/>
+                            <Span Text=" " />
+                            <Span Text="{translate:Translate DetailProductCurrency}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+
+                </Label>
+
+                <Label Style="{x:StaticResource LabelCardBackground}"  VerticalOptions="Center" IsVisible="{Binding DiscountPrice,Converter={x:StaticResource PriveVisibleConverter},ConverterParameter= 'true'}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <Span Text="{translate:Translate DetailProductPrice}" />
+                            <Span Text=" " />
+                            <Span Text="{Binding Price}" />
+                            <Span Text=" " />
+                            <Span Text="{translate:Translate DetailProductCurrencyKg}" />
+                        </FormattedString>
+                    </Label.FormattedText>
+
+                    <!--<Label.Triggers>
+                    <DataTrigger TargetType="Button"
+                     Binding="{Binding Source={x:Reference label},
+                                       Path=IsVisible}" Value="True">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+
+                </Label.Triggers>-->
+                </Label>
+
+                <Button HorizontalOptions="EndAndExpand" IsVisible="{Binding AllCount, Converter={x:StaticResource IsVisibleConverter}}" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.BasketCommand}" CommandParameter="{Binding .}"  WidthRequest="120" TextColor="White" FontAttributes="Bold" BackgroundColor="Green" Text="{translate:Translate ProductBasket}"></Button>
+            </StackLayout>
+        </Grid>
+
+</pancakeView:PancakeView>
+
