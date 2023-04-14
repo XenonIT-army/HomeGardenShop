@@ -15,7 +15,7 @@
            xmlns:controls="clr-namespace:HomeGardenShop.Controls"
             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
               ios:Page.UseSafeArea="true"
-    BackgroundColor="Transparent"
+     Style="{x:StaticResource ContentPageBackground}"
           NavigationPage.HasNavigationBar="false"
     x:Class="HomeGardenShop.Views.StorePage">
 
@@ -33,8 +33,8 @@
             <tabs:TabHostView x:Name="TabHost"  TabType="Scrollable" IsSegmented="True"
                        Grid.Row="0"
                                 BackgroundColor="{AppThemeBinding Dark={StaticResource TabHostDarkColor},Light={StaticResource DarkFrameColor}}"   
-                                  SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}"
-                                  ItemsSource="{Binding Categories}">
+                                  SelectedIndex="{Binding Source={x:Reference Switcher}, Path=SelectedIndex, Mode=TwoWay}"   
+                                  ItemsSource="{Binding Categories,Mode=TwoWay}">
                 <!--<tabs:TabHostView.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Quote</x:String>
@@ -70,7 +70,7 @@
                 </tabs:TabHostView.ItemTemplate>
             </tabs:TabHostView>
             <tabs:ViewSwitcher x:Name="Switcher" 
-                           Animate="True" Grid.Row="1"
+                           Animate="True" Grid.Row="1" PropertyChanged="Switcher_PropertyChanged"
                             SelectedIndex="{Binding SelectedProductsIndex, Mode=TwoWay}">
                 <viewcell:ProductsLoaderView />
 

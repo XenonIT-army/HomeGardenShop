@@ -10,7 +10,7 @@
             <Grid x:Name="Grid" RowDefinitions="auto,*" Margin="15,30,15,70" IsVisible="{Binding IsSign}">
 
                 <Frame Grid.Row="0" CornerRadius="60" HorizontalOptions="Center" HeightRequest="80" WidthRequest="80">
-                    <Image Source="Default.png" Aspect="Fill" HeightRequest="250" WidthRequest="250">
+                    <Image Source="outline_help.png" Aspect="Fill" HeightRequest="250" WidthRequest="250">
 
 
                     </Image>
@@ -44,7 +44,7 @@
             </Grid>
 
             <Grid >
-                <Button Command="{Binding SignInCommand}" Text="{translate:Translate UserDataSignIn}" BackgroundColor="Gold" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Button>
+                <Button Command="{Binding SignInCommand}" Text="{translate:Translate UserDataSignIn}" BackgroundColor="Gold" VerticalOptions="CenterAndExpand" WidthRequest="250" HorizontalOptions="CenterAndExpand"></Button>
                <Grid.Triggers>
                     <DataTrigger TargetType="Grid"
                      Binding="{Binding Source={x:Reference Grid},

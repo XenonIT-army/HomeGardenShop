@@ -86,7 +86,7 @@
 
         </taskLoaderView:TaskLoaderView>-->
         <Grid RowDefinitions="auto">
-            <ListView IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsRefreshing}" RefreshCommand="{Binding RefreshCommand}" Grid.Row="0"   CachingStrategy="RecycleElement"  VerticalScrollBarVisibility="Never" 
+            <ListView IsPullToRefreshEnabled="True"  IsRefreshing="{Binding IsRefreshing}" RefreshCommand="{Binding RefreshCommand}" Grid.Row="0"   CachingStrategy="RecycleElement"  VerticalScrollBarVisibility="Never" 
 	                                                     ItemsSource="{Binding Products}" Style="{x:StaticResource ListViewStyle}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

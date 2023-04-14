@@ -168,6 +168,9 @@
   <data name="NewsDate" xml:space="preserve">
     <value>Date news:</value>
   </data>
+  <data name="NewsListEmpty" xml:space="preserve">
+    <value>List news is Empty</value>
+  </data>
   <data name="OrderDate" xml:space="preserve">
     <value>Order  date:</value>
   </data>

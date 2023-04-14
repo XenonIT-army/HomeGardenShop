@@ -26,14 +26,14 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
-    <CodesignProvision>Test Project</CodesignProvision>
+    <CodesignProvision>VS: com.maksoft.HomeGardenShop Development</CodesignProvision>
     <CodesignKey>Apple Development: Maksim Slutskiy (8X2T2TZ392)</CodesignKey>
     <MtouchEnableSGenConc>false</MtouchEnableSGenConc>
     <MtouchDebug>true</MtouchDebug>
     <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
     <MtouchI18n>west</MtouchI18n>
-<DeviceSpecificBuild>false</DeviceSpecificBuild>
-<MtouchSdkVersion>15.5</MtouchSdkVersion>
+    <DeviceSpecificBuild>false</DeviceSpecificBuild>
+    <MtouchSdkVersion>15.5</MtouchSdkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -57,12 +57,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>Apple Development: Maksim Slutskiy (8X2T2TZ392)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>None</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
-    <CodesignProvision>Test Project</CodesignProvision>
+    <CodesignProvision>VS: com.maksoft.HomeGardenShop Development</CodesignProvision>
+    <IOSDebuggerPort>10000</IOSDebuggerPort>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -73,25 +74,30 @@
     <MtouchArch>ARM64</MtouchArch>
     <CodesignKey>Apple Development: Maksim Slutskiy (8X2T2TZ392)</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <CodesignProvision></CodesignProvision>
+    <CodesignProvision>
+    </CodesignProvision>
     <MtouchLink>SdkOnly</MtouchLink>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Default' ">
+    <AppExtensionDebugBundleId />
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
     <None Include="Entitlements.plist" />
-    <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomViews\ExtendedImageRender.cs" />
     <Compile Include="CustomViews\ExtendedImageButtonRenderer.cs" />
     <Compile Include="CustomViews\ExtendedViewCellRenderer.cs" />
-    <None Include="Info.plist" />
     <Compile Include="CustomViews\ExtendedPickerRenderer.cs" />
     <Compile Include="Helpers\PickerBorderHelper.cs" />
     <Compile Include="CustomViews\ExtendedDatePickerRenderer.cs" />
     <Compile Include="Helpers\AlignmentHelper.cs" />
     <Compile Include="Helpers\StatusBarStyleManager.cs" />
     <Compile Include="Helpers\Path.cs" />
+    <InterfaceDefinition Include="Resources\MainStoryboard.storyboard" />
+    <None Include="Info.plist" />
+    <InterfaceDefinition Include="Resources\MainLoadStoryboard.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -146,7 +152,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2515" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2545" />
     <PackageReference Include="Xamarin.Essentials" Version="1.7.3" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
@@ -156,10 +162,7 @@
       <Name>HomeGardenShop</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="CustomViews\" />
-    <Folder Include="Helpers\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <BundleResource Include="Resources\CHE.png" />
     <BundleResource Include="Resources\outline_swap.png" />
@@ -199,7 +202,6 @@
     <BundleResource Include="Resources\outline_wagons_supply%402x.png" />
     <BundleResource Include="Resources\EGY.png" />
     <BundleResource Include="Resources\TJK%402x.png" />
-    <BundleResource Include="Resources\TMMAPMOBILE_INSTALLDEMO_2.pfx" />
     <BundleResource Include="Resources\outline_help%402x.png" />
     <BundleResource Include="Resources\outline_clear%403x.png" />
     <BundleResource Include="Resources\outline_filter.png" />
@@ -610,7 +612,6 @@
     <BundleResource Include="Resources\outline_search%403x.png" />
     <BundleResource Include="Resources\outline_ac_unit%402x.png" />
     <BundleResource Include="Resources\EST%403x.png" />
-    <BundleResource Include="Resources\cert.pfx" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Resources\LaunchStoryboard.storyboard" />

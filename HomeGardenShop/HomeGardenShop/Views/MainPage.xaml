@@ -4,7 +4,7 @@
         xmlns:d="http://xamarin.com/schemas/2014/forms/design"
      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
      mc:Ignorable="d"
-               BackgroundColor="Transparent"
+               Style="{x:StaticResource ContentPageBackground}"
                 xmlns:translate="clr-namespace:HomeGardenShop.Helps.AppLocalizer;assembly=HomeGardenShop" 
         xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
               ios:Page.UseSafeArea="true"
@@ -16,7 +16,19 @@
     
    <ContentPage.Content>
         <Grid Style="{x:StaticResource GridBackground}">
-             <ListView CachingStrategy="RecycleElement" IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsRefreshing}" RefreshCommand="{Binding RefreshCommand}" VerticalScrollBarVisibility="Never" 
+            <Label Text="{translate:Translate NewsListEmpty}" IsVisible="{Binding IsVisible}"  TextColor="Gray" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <!--<Label.Triggers>
+                    <DataTrigger TargetType="Label"
+                                        Binding="{Binding IsVisible}" Value="True">
+                        <Setter Property="IsVisible" Value="False" />
+                    </DataTrigger>
+                    <DataTrigger TargetType="Label"
+                                        Binding="{Binding IsVisible}" Value="False">
+                        <Setter Property="IsVisible" Value="True" />
+                    </DataTrigger>
+                </Label.Triggers>-->
+            </Label>
+            <ListView CachingStrategy="RecycleElement" IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsRefreshing}" RefreshCommand="{Binding RefreshCommand}" VerticalScrollBarVisibility="Never" 
 	                                                     ItemsSource="{Binding News}" Style="{x:StaticResource ListViewStyle}">
                 <ListView.ItemTemplate>
                     <DataTemplate>

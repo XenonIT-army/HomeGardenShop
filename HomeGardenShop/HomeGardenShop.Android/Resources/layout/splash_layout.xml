@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#e4c313">
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+     android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:fontFamily="sans-serif"
+        android:textStyle="bold"
+        android:textSize="30dp"
+        android:textColor="#ffffff"
+    android:text="HomeGardenShop"/>
+    <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+          android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+          android:textSize="18dp"
+          android:textColor="#ffffff"
+         android:fontFamily="sans-serif"
+        android:textStyle="italic"
+ android:layout_gravity="bottom" android:layout_alignParentBottom="true"
+    android:text="XenonIT-army (github.com)"/>
+
+</RelativeLayout>

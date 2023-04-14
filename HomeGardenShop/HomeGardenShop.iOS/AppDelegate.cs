@@ -23,6 +23,12 @@ namespace HomeGardenShop.iOS
         //
         // You have 17 seconds to return from this method, or iOS will terminate your application.
         //
+
+        public override UIWindow Window
+        {
+            get;
+            set;
+        }
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             Forms.SetFlags(new string[] { "RadioButton_Experimental", "IndicatorView_Experimental", "AppTheme_Experimental", "FastRenderers_Experimental" });

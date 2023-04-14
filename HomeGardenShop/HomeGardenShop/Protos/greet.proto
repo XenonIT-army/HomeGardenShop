@@ -1,7 +1,7 @@
 ﻿syntax = "proto3";
 
 option csharp_namespace = "HomeGardenShopServer";
-
+import "google/protobuf/timestamp.proto";
 package greet;
 
 service Greeter {
@@ -16,7 +16,7 @@ service Greeter {
 
     rpc ListCategorys(CategorysRequest) returns (stream CategorysReply) {}
 
-    rpc ListNews(NewsRequest) returns (stream NewsReply) {}
+    rpc ListNews(NewsRequest) returns (ListNewsReply);
 
     rpc RegistrUser (RegistrUserRequest) returns (RegistrUserReply);
 
@@ -93,12 +93,16 @@ message ListOrdersReply {
    repeated OrderGrpc orders = 1;
 }
 
+message ListNewsReply {
+   repeated NewsGrpc news = 1;
+}
+
 message OrderGrpc {
     int32 orderId = 1;
     string userId = 2;
     int32 statusId = 3;
     double sum = 4;
-    string dateTime = 5;
+    google.protobuf.Timestamp dateTime = 5;
     repeated ProductsReply products = 6;
 }
 
@@ -122,12 +126,12 @@ message CancelOrderReply{
     bool isCancel = 1;
 }
 
-message NewsReply{
+message NewsGrpc{
     int32 id = 1;
     string name = 2;
     string description = 3;
     bytes image = 4;
-    string dateTime = 5;
+    google.protobuf.Timestamp dateTime = 5;
 }
 
 message RegistrUserReply{

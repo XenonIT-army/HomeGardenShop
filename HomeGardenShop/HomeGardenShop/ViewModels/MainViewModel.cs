@@ -48,20 +48,36 @@ namespace HomeGardenShop.ViewModels
                 }
             }
         }
+        private bool _isVisible;
+        public bool IsVisible
+        {
+            get
+            {
 
+                return _isVisible;
+            }
+            set
+            {
+                if (_isVisible != value)
+                {
+                    SetProperty(ref _isVisible, value);
+                }
+            }
+        }
         public MainViewModel(INavigationService navigationService, IEventAggregator eventAggregator, IPageDialogService pageDialogService) :
            base(navigationService, eventAggregator, pageDialogService)
         {
             base.SelectedIndex = 2;
             this.ToolbarItems = new List<ViewItem>
             {
-                new ViewItem {Title="StorePage", ImageSource="outline_settings.png" },
-                  new ViewItem { Title = "BasketPage", ImageSource = "outline_settings.png" },
-                  new ViewItem {Title="MainPage", ImageSource="outline_settings.png" },
-                  new ViewItem { Title = "OrderHistoryPage", ImageSource = "outline_settings.png" },
+                new ViewItem {Title="StorePage", ImageSource="outline_tree.png" },
+                  new ViewItem { Title = "BasketPage", ImageSource = "outline_cargo.png" },
+                  new ViewItem {Title="MainPage", ImageSource="outline_book.png" },
+                  new ViewItem { Title = "OrderHistoryPage", ImageSource = "store_history.png" },
                     new ViewItem {Title="UserDataPage", ImageSource="outline_settings.png" }
             };
             News = new ObservableCollection<News>();
+         
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)
@@ -87,7 +103,16 @@ namespace HomeGardenShop.ViewModels
                 {
                     if (App.AppModel != null && App.AppModel.News != null && App.AppModel.News.Count > 0)
                     {
+
                         News = new ObservableCollection<News>(App.AppModel.News);
+                        if (News.Count > 0)
+                        {
+                            IsVisible = false;
+                        }
+                        else
+                        {
+                            IsVisible = true;
+                        }
                         break;
                     }
                 }
@@ -99,6 +124,14 @@ namespace HomeGardenShop.ViewModels
              IsRefreshing = true;
              App.AppModel.News =  await App.GreeterService.GetListNews(CultureInfo.CurrentUICulture.Name);
              News = new ObservableCollection<News>(App.AppModel.News);
+             if (News.Count > 0)
+             {
+                 IsVisible = false;
+             }
+             else
+             {
+                 IsVisible = true;
+             }
              IsRefreshing = false;
          }));
         public DelegateCommand MainCommand =>

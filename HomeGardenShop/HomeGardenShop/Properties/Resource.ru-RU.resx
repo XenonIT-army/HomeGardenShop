@@ -168,6 +168,9 @@
   <data name="NewsDate" xml:space="preserve">
     <value>Дата новости:</value>
   </data>
+  <data name="NewsListEmpty" xml:space="preserve">
+    <value>Список новостей пуст</value>
+  </data>
   <data name="OrderDate" xml:space="preserve">
     <value>Дата заказа:</value>
   </data>

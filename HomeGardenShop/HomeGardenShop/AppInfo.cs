@@ -86,13 +86,6 @@ namespace HomeGardenShop
         }
 
 
-
-        public string UrlServer
-        {
-            //get => "http://192.168.64.140:41710/PurchaseServer";
-            get => "http://tmlic.tmkarta.com:41730/PurchaseServer";
-        }
-
         public string UserViewsKey { get => "userViewsKey"; }
         public string LanguageKey { get => "languageKey"; }
         public string ThemeKey { get => "themeKey"; }

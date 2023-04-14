@@ -11,6 +11,8 @@ namespace HomeGardenShop.Views.ViewCell
 		{
 			InitializeComponent ();
 		}
+
+       
     }
 }
 

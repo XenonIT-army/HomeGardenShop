@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using HomeGardenShop.AppManagers;
 using HomeGardenShop.Controls;
 using HomeGardenShop.Models;
 using HomeGardenShop.Views.DialogViews;
@@ -12,6 +14,7 @@ using Prism.Events;
 using Prism.Navigation;
 using Prism.Services;
 using Rg.Plugins.Popup.Services;
+using Xamarin.Forms;
 
 namespace HomeGardenShop.ViewModels
 {
@@ -21,6 +24,7 @@ namespace HomeGardenShop.ViewModels
         private DelegateCommand _refreshCommand;
         private string _name;
         private bool _isRefreshing;
+        private bool isBusy;
         private ObservableCollection<Product> _products = new ObservableCollection<Product>();
         private ObservableCollection<Product> _loadProducts = new ObservableCollection<Product>();
         private List<Product> _allProducts = new List<Product>();
@@ -33,9 +37,11 @@ namespace HomeGardenShop.ViewModels
             get => _selectedProductsIndex;
             set
             {
-                SetProperty(ref _selectedProductsIndex, value);
-                ReloadAsync();
-
+                if (!IsRefreshing)
+                {
+                    SetProperty(ref _selectedProductsIndex, value);
+                    ReloadAsync();
+                }
             }
         }
         public string Name
@@ -119,7 +125,6 @@ namespace HomeGardenShop.ViewModels
         {
             base.SelectedIndex = 0;
             Name = "UserData";
-           
           
             //Categories.Add(new Category { Name = "Огурцы", Id = 1 });
             //Categories.Add(new Category { Name = "Помидоры", Id = 0 });
@@ -127,10 +132,10 @@ namespace HomeGardenShop.ViewModels
 
             this.ToolbarItems = new List<ViewItem>
             {
-                new ViewItem {Title="StorePage", ImageSource="outline_settings.png" },
-                  new ViewItem { Title = "BasketPage", ImageSource = "outline_settings.png" },
-                  new ViewItem {Title="MainPage", ImageSource="outline_settings.png" },
-                  new ViewItem { Title = "OrderHistoryPage", ImageSource = "outline_settings.png" },
+                new ViewItem {Title="StorePage", ImageSource="outline_tree.png" },
+                  new ViewItem { Title = "BasketPage", ImageSource = "outline_cargo.png" },
+                  new ViewItem {Title="MainPage", ImageSource="outline_book.png" },
+                  new ViewItem { Title = "OrderHistoryPage", ImageSource = "store_history.png" },
                     new ViewItem {Title="UserDataPage", ImageSource="outline_settings.png" }
             };
 
@@ -150,11 +155,12 @@ namespace HomeGardenShop.ViewModels
           _refreshCommand ?? (_refreshCommand = new DelegateCommand(async() =>
           {
               IsRefreshing = true;
+              App.AppModel.Categorys = await App.GreeterService.GetCategorysAsync(CultureInfo.CurrentUICulture.Name);
               App.AppModel.Products = await App.GreeterService.GetProductsAsync(CultureInfo.CurrentUICulture.Name);
               _allProducts = App.AppModel.Products;
               GetCategoryCountProduct();
-              ReloadAsync();
               IsRefreshing = false;
+              ReloadAsync();
           }));
 
 
@@ -169,7 +175,8 @@ namespace HomeGardenShop.ViewModels
 
         private Task<ObservableCollection<Product>> GetProductsList(int index)
         {
-            return Task<ObservableCollection<Product>>.Run(() => { var res = new ObservableCollection<Product>(_allProducts.Where(x => x.CategoryId == Categories[index].Id).OrderByDescending(x => x.Id));  return res; });
+            var res = new ObservableCollection<Product>(_allProducts.Where(x => x.CategoryId == Categories[index].Id).OrderByDescending(x=> x.Id));
+            return  Task.FromResult(res);
         }
         //private async Task<ObservableCollection<Product>> InitializeAsync()
         //{
@@ -177,6 +184,7 @@ namespace HomeGardenShop.ViewModels
         //    if (isStart)
         //    {
         //        await Task.Delay(3000);
+
         //        _allProducts = await App.GreeterService.GetProductsAsync("test");
         //    }
         //    this.Products = await GetProductsList(SelectedProductsIndex);
@@ -186,7 +194,11 @@ namespace HomeGardenShop.ViewModels
         private async void ReloadAsync()
         {
             this.Products.Clear();
-            this.Products = await GetProductsList(SelectedProductsIndex);
+            var list = await GetProductsList(SelectedProductsIndex);
+            foreach (var product in list)
+            {
+                this.Products.Add(product);
+            }
         }
 
         //bool isBusy = false;
@@ -201,12 +213,34 @@ namespace HomeGardenShop.ViewModels
         private void GetCategoryCountProduct()
         {
             var categories = new ObservableCollection<Category>(App.AppModel.Categorys);
-
             foreach (var item in categories)
             {
                 item.Count = this._allProducts.Where(x => x.CategoryId == item.Id).Count();
             }
-            this.Categories = new ObservableCollection<Category>(categories.Where(x => x.Count > 0));
+            if (IsRefreshing)
+            {
+                foreach (var item in categories)
+                {
+                    var res = this.Categories.Where(x => x.Id == item.Id).FirstOrDefault();
+                    if (res == null && item.Count > 0)
+                    {
+                        this.Categories.Add(item);
+                    }
+                    else if(res != null)
+                    {
+                        res.Count = item.Count;
+                    }
+                  
+                }
+            }
+            else
+            {
+                //foreach (var item in categories)
+                //{
+                //    item.Count = this._allProducts.Where(x => x.CategoryId == item.Id).Count();
+                //}
+                this.Categories = new ObservableCollection<Category>(categories.Where(x => x.Count > 0));
+            }
         }
         protected override void ToolbarItemClicked(object parameter)
         {

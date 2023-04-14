@@ -11,25 +11,19 @@ namespace HomeGardenShop.Views
 {	
 	public partial class StorePage : ContentPage
 	{	
-		public StorePage ()
+      bool isAppearing = false;
+
+        public StorePage ()
 		{
-			InitializeComponent ();
+            isAppearing = true;
+            InitializeComponent ();
 
 		}
         protected override void OnAppearing()
         {
-
             base.OnAppearing();
-            int count = GetEnumerableCount(TabHost.ItemsSource);
-            if (count >0)
-            {
-                for (int i = 1; i < count; i++)
-                {
-                    ProductsLoaderView loaderView = new ProductsLoaderView();
-                    Switcher.Children.Add(loaderView);
-                }
-            }
-
+            AddView();
+            isAppearing = false;
         }
 
         public int GetEnumerableCount(IEnumerable Enumerable)
@@ -37,6 +31,35 @@ namespace HomeGardenShop.Views
 			return (from object Item in Enumerable
 					select Item).Count();
 		}
-	}
+
+        private void Switcher_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+
+            if(e.PropertyName ==  nameof(TabHost.SelectedIndex) && !isAppearing)
+            {
+                int count = GetEnumerableCount(TabHost.ItemsSource);
+                if (Switcher.Children.Count < count)
+                {
+                    for (int i = Switcher.Children.Count; i < count; i++)
+                    {
+                        ProductsLoaderView loaderView = new ProductsLoaderView();
+                        Switcher.Children.Add(loaderView);
+                    }
+                }
+            }
+        }
+        private void AddView()
+        {
+            int count = GetEnumerableCount(TabHost.ItemsSource);
+            if (count > 0)
+            {
+                for (int i = 1; i < count; i++)
+                {
+                    ProductsLoaderView loaderView = new ProductsLoaderView();
+                    Switcher.Children.Add(loaderView);
+                }
+            }
+        }
+    }
 }
 

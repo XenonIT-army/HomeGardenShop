@@ -5,7 +5,7 @@
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
      mc:Ignorable="d"
-      BackgroundColor="Transparent"
+      Style="{x:StaticResource ContentPageBackground}"
         xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
               ios:Page.UseSafeArea="true"
        xmlns:translate="clr-namespace:HomeGardenShop.Helps.AppLocalizer;assembly=HomeGardenShop" 

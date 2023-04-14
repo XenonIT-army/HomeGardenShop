@@ -214,6 +214,15 @@ namespace HomeGardenShop.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to List news is Empty.
+        /// </summary>
+        internal static string NewsListEmpty {
+            get {
+                return ResourceManager.GetString("NewsListEmpty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Order  date:.
         /// </summary>
         internal static string OrderDate {

@@ -44,11 +44,11 @@ namespace HomeGardenShop.Services
 
                 //var serverAddress = (Device.RuntimePlatform == Device.Android ? "https://192.168.0.102" : "https://192.168.0.102");
 
-                var serverAddress = (Device.RuntimePlatform == Device.Android ? "http://10.0.2.2:5000" : "https://185.250.23.158:5000");
+                var serverAddress = (Device.RuntimePlatform == Device.Android ? "https://185.250.23.158:5000" : "https://185.250.23.158:5000");
 
-                var path = Xamarin.Forms.DependencyService.Get<IPath>().GetPath("cert.pfx");
+                //var path = Xamarin.Forms.DependencyService.Get<IPath>().GetPath("cert.pfx");
+               // var sert = new X509Certificate2(path, "2904");
 
-                var sert = new X509Certificate2(path, "2904");
                 var httpHandler = new HttpClientHandler();
                 //httpHandler.ClientCertificates.Add(sert);
                 _httpHandler = new GrpcWebHandler(GrpcWebMode.GrpcWebText, httpHandler);
@@ -232,14 +232,7 @@ namespace HomeGardenShop.Services
                             products.Add(new Product { Id = prod.Id, Name = prod.Name, Count = prod.Count, Price = prod.Price, CategoryId = prod.CategoryId, DiscountPrice = prod.DiscountPrice, Description = prod.Description, Image = prod.Image });
                         }
 
-                        try
-                        {
-                            date = DateTime.ParseExact(item.DateTime, "dd.MM.yyyy HH:mm:ss", System.Globalization.CultureInfo.InvariantCulture);
-                        }
-                        catch 
-                        {
-                        }
-                        orders.Add(new Order { Id = item.OrderId, StatusId = item.StatusId, Sum = item.Sum, UserId = item.UserId, DataTime = date, Products = products });
+                        orders.Add(new Order { Id = item.OrderId, StatusId = item.StatusId, Sum = item.Sum, UserId = item.UserId, DataTime = item.DateTime.ToDateTime(), Products = products });
                     }
                 }
 
@@ -298,23 +291,33 @@ namespace HomeGardenShop.Services
             return Task.FromResult(result);
         }
 
-        public async Task<List<News>> GetListNews(string name)
+        public Task<List<News>> GetListNews(string name)
         {
             bool result = false;
             List<News> news = new List<News>();
             CancellationToken token = new CancellationToken();
             try
             {
-                using (var call = _greeterClient.ListNews(new HomeGardenShopServer.NewsRequest { Language = name }))
+                //using (var call = _greeterClient.ListNews(new HomeGardenShopServer.NewsRequest { Language = name }))
+                //{
+
+                //    while (await call.ResponseStream.MoveNext(token))
+                //    {
+                //        var item = call.ResponseStream.Current;
+
+                //        news.Add(new News { Id = item.Id, Name = item.Name, Description = item.Description, DataTime = DateTime.Parse(item.DateTime), Image = item.Image });
+                //    }
+                //}
+
+                using (var call = _greeterClient.ListNewsAsync(new HomeGardenShopServer.NewsRequest { Language = name }))
                 {
-
-                    while (await call.ResponseStream.MoveNext(token))
+                    var responce = call.ResponseAsync.Result;
+                    foreach (var item in responce.News)
                     {
-                        var item = call.ResponseStream.Current;
-
-                        news.Add(new News { Id = item.Id, Name = item.Name, Description = item.Description, DataTime = DateTime.Parse(item.DateTime), Image = item.Image });
+                        news.Add(new News { Id = item.Id, Name = item.Name, Description = item.Description, DataTime = item.DateTime.ToDateTime(), Image = item.Image });
                     }
                 }
+
                 result = true;
             }
             catch (Exception ex)
@@ -324,7 +327,7 @@ namespace HomeGardenShop.Services
 
 
 
-            return news;
+            return Task.FromResult(news); 
         }
 
         public Task<bool> RegistrUser(User user)

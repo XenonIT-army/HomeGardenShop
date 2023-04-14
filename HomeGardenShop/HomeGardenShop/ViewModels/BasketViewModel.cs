@@ -115,10 +115,10 @@ namespace HomeGardenShop.ViewModels
             base.SelectedIndex = 1;
             this.ToolbarItems = new List<ViewItem>
             {
-                new ViewItem {Title="StorePage", ImageSource="outline_settings.png" },
-                  new ViewItem { Title = "BasketPage", ImageSource = "outline_settings.png" },
-                  new ViewItem {Title="MainPage", ImageSource="outline_settings.png" },
-                  new ViewItem { Title = "OrderHistoryPage", ImageSource = "outline_settings.png" },
+                new ViewItem {Title="StorePage", ImageSource="outline_tree.png" },
+                  new ViewItem { Title = "BasketPage", ImageSource = "outline_cargo.png" },
+                  new ViewItem {Title="MainPage", ImageSource="outline_book.png" },
+                  new ViewItem { Title = "OrderHistoryPage", ImageSource = "store_history.png" },
                     new ViewItem {Title="UserDataPage", ImageSource="outline_settings.png" }
             };
             LastOrder = App.AppModel.Order;

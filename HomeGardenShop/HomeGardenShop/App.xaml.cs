@@ -71,6 +71,7 @@ namespace HomeGardenShop
             GreeterService = new GardenShopService();
         }
 
+
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterPopupDialogService();

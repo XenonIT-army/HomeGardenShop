@@ -94,15 +94,15 @@
             </Label.FormattedText>
         </Label>
 
-        <customviews:ExtendedImageButton BackgroundColor="Transparent" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.RemoveProductCommand}" CommandParameter="{Binding .}"  Grid.Column="2" Grid.Row="0" VerticalOptions="Start"  Source="outline_clear.png"  TintColor="Red" HorizontalOptions="End">
+        <customviews:ExtendedImageButton BackgroundColor="Transparent" Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.RemoveProductCommand}" CommandParameter="{Binding .}"  Grid.Column="2" Grid.Row="0" Margin="0,-15,0,0"  Source="outline_clear.png"  TintColor="Red" HorizontalOptions="End">
             <customviews:ExtendedImageButton.HeightRequest>
                 <OnPlatform x:TypeArguments="x:Double">
-                    <On Platform="iOS" Value="35" />
+                    <On Platform="iOS" Value="55" />
                     <On Platform="Android" Value="25" />
                 </OnPlatform>
             </customviews:ExtendedImageButton.HeightRequest>
         </customviews:ExtendedImageButton>
-        <customviews:ExtendedImageButton BackgroundColor="Transparent"  Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditProductCommand}" CommandParameter="{Binding .}"  Grid.Column="2"   Grid.Row="1"  VerticalOptions="End"  Source="outline_edit.png"  TintColor="{AppThemeBinding Dark={StaticResource Black},Light={StaticResource White}}" HorizontalOptions="End">
+        <customviews:ExtendedImageButton BackgroundColor="Transparent" Margin="0,15,0,0"  Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.EditProductCommand}" CommandParameter="{Binding .}"  Grid.Column="2"   Grid.Row="1"  VerticalOptions="End"  Source="outline_edit.png"  TintColor="{AppThemeBinding Dark={StaticResource Black},Light={StaticResource White}}" HorizontalOptions="End">
             <!--<customviews:ExtendedImageButton.Margin>
                 <OnPlatform x:TypeArguments="Thickness">
                     <On Platform="iOS" Value="0,0,-10,-20" />
@@ -111,7 +111,7 @@
             </customviews:ExtendedImageButton.Margin>-->
             <customviews:ExtendedImageButton.HeightRequest>
                 <OnPlatform x:TypeArguments="x:Double">
-                    <On Platform="iOS" Value="35" />
+                    <On Platform="iOS" Value="25" />
                     <On Platform="Android" Value="25" />
                 </OnPlatform>
             </customviews:ExtendedImageButton.HeightRequest>

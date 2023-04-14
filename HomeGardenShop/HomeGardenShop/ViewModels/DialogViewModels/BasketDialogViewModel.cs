@@ -78,7 +78,7 @@ namespace HomeGardenShop.ViewModels.DialogViewModels
                     var item = App.AppModel.Order.Products.Where(x=> x.Id == Product.Id).FirstOrDefault();
                     if(item != null)
                     {
-                        item.Count += Product.Count;
+                        item.Count = Product.Count;
                     }
                     else
                     {
